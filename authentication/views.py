@@ -25,3 +25,8 @@ class SigninView(LoginView):
         result = super().form_valid(form)
         return result
 
+class LogoutView(View,LoginRequiredMixin):
+    login_url = reverse_lazy('signin')
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect(reverse_lazy('home'))
