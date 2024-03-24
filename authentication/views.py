@@ -16,4 +16,12 @@ class SignupView(CreateView):
     success_url = reverse_lazy('signup')
     template_name = 'signup.html'
 
+class SigninView(LoginView):
+    model = User
+    next_page = reverse_lazy('signup')
+    template_name = 'login.html'
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        return result
 
