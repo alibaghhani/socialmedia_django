@@ -5,7 +5,6 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, RedirectView, DetailView
-
 from .models import User
 # Create your views here.
 
@@ -15,6 +14,11 @@ class SignupView(CreateView):
     fields = ['username','password','phone_number','biography','hobbies','gender']
     success_url = reverse_lazy('signup')
     template_name = 'signup.html'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        
+        return response
 
 class SigninView(LoginView):
     model = User
