@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<nav class="bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
+        <!-- Home button -->
+        <a href="{% url 'home' %}" class="text-gray-800 font-semibold">Home</a>
+        <!-- Explore button -->
+        <a href="{% url 'explore' %}" class="text-gray-800 font-semibold">Explore</a>
+    </div>
+</nav>
+
+<div class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+            <div class="col-span-4 sm:col-span-3">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <div class="flex flex-col items-center">
+                        <img src="{% static 'images/profile.jpg' %}"
+                             class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+                        </img>
+                        <h1 class="text-xl font-bold">{{ user.username }}</h1>
+                        <p class="text-gray-700"></p>
+                        <div class="mt-6 flex flex-wrap gap-4 justify-center">
+                            <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
+                            <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">follow</a>
+                        </div>
+                    </div>
+                    <hr class="my-6 border-t border-gray-300">
+                    <div class="flex flex-col">
+                        <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">hobbies</span>
+                        <ul>
+                            <li class="mb-2">{{ user.hobbies }}</li>
+                        </ul>
+                        <br>
+                        <a href="#">followers</a>
+                        <a href="#">followings</a>
+                        <a href="{% url 'settings' %}">settings</a>
+                        <a href="{% url 'post' %}">create post</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4 sm:col-span-9">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <h2 class="text-xl font-bold mb-4">About Me</h2>
+                    <p class="text-gray-700">{{ user.biography }}
+                    </p>
+
+                    <h3 class="font-semibold text-center mt-3 -mb-2">
+                        Your posts
+                    </h3>
+                    <div class="flex justify-center items-center gap-6 my-6">
+                        <div class="flex justify-between">
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                    <img class="w-full" src="{% static 'images/reservoir.jpg' %}"
+                                         alt=" Sunset in the mountains">
+                                    <div class="px-6 py-4">
+                                        <div class="font-bold text-xl mb-2">reservoir dogzzzzz</div>
+                                        <p class="text-gray-700 text-base">
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pt-4 pb-2">
+                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#movie</span>
+                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#tarantino</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                    {% for post in user_posts %}
+                                        <div>
+                                            <img class="w-full" src="{{ post.image.url }}" alt="{{ post.title }}">
+                                            <div class="px-6 py-4">
+                                                <div class="font-bold text-xl mb-2">{{ post.title }}</div>
+                                                <p class="text-gray-700 text-base">
+                                                    {{ post.content }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="px-6 pt-4 pb-2">
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#music</span>
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#hiphop</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                <img class="w-full" src="{% static 'images/leo.jpg' %}"
+                                     alt=" Sunset in the mountains">
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2">هنرمند</div>
+                                    <p class="text-gray-700 text-base">
+                                        Al pacino
+                                    </p>
+                                </div>
+                                <div class="px-6 pt-4 pb-2">
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#movie</span>
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#art</span>
+                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

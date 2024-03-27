@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>explore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<nav class="bg-gray-800 p-4">
+    <div class="flex items-center justify-between">
+        <!-- Search bar -->
+        <div class="flex-1 mr-4">
+            <input type="text" placeholder="Search"
+                   class="w-full px-2 py-1 bg-gray-700 text-white rounded focus:outline-none focus:ring focus:border-blue-300">
+        </div>
+        <!-- Home and Profile links -->
+        <div>
+            <a href="{% url 'home' %}" class="text-white font-bold mr-4">Home</a>
+            <a href="#" class="text-white">Profile</a>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="flex justify-between">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img class="w-full" src="{% static 'images/icon.png' %}" alt=" Sunset in the mountains">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Aligram crossed 30 million users overnight!</div>
+                <p class="text-gray-700 text-base">
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#technology</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#media</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#network</span>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <video width="320" height="320">
+                <source src="{% static 'videos/java.mp4' %}" type="video/mp4">
+                <source src="{% static 'videos/java.mp4' %}" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+            <div class="px-6 py-4 ">
+                <div class="font-bold text-xl mb-2">دوره جاوا مکتب</div>
+                <p class="text-gray-700 text-base">
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2 ">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#اموزش</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#course</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#java</span>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-sm rounded overflow-hidden shadow-lg ">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg ">
+            <img class="w-full" src="{% static 'images/faramarz.jpg' %}" alt=" Sunset in the mountains">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">مرگ یکی از ارازل تهران</div>
+                <p class="text-gray-700 text-base">
+                    ماجرای دعوای دوتا از ارازل سطح یک تهران , وحید و فرامرز قرقونی
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2 ">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#حاشیه</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#شرارت</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#python</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="flex justify-between">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img class="w-full" src="{% static 'images/hello.jpg' %}" alt=" Sunset in the mountains">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">הִתאַבְּדוּת</div>
+                <p class="text-gray-700 text-base">
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#pink</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#drugz</span>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img class="w-full" src="{% static 'images/error.png' %}" alt=" Sunset in the mountains">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2"></div>
+                <p class="text-gray-700 text-base">
+                    ?????
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#danger</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img class="w-full" src="{% static 'images/irish.jpg' %}" alt=" Sunset in the mountains">
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Irishman</div>
+                <p class="text-gray-700 text-base">
+                    Martin Scorsese's MASTERPIECE!
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#movie</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#classic</span>
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#hollywood</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
+<div class="container mx-auto py-8">
+    <h1 class="text-2xl font-bold mb-4">User Settings</h1>
+    <div class="flex flex-col space-y-4">
+        <a href="{% url 'logout' %}">
+            <button class="btn-dark">Log Out</button>
+        </a>
+        <button class="btn-light">Change Password</button>
+        <button class="btn-light">Change Username</button>
+        <button class="btn-light">Change Biography</button>
+        <button class="btn-light">Change Hobbies</button>
+    </div>
+    <div class="mt-8">
+        <label for="theme-toggle" class="flex items-center cursor-pointer">
+            <span class="mr-2">Dark Mode</span>
+            <input type="checkbox" id="theme-toggle" class="hidden"/>
+            <span class="slider rounded-full"></span>
+        </label>
+    </div>
+</div>
+
+<script>
+    const toggleSwitch = document.querySelector('#theme-toggle');
+
+    toggleSwitch.addEventListener('change', switchTheme, false);
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'dark') {
+            toggleSwitch.checked = true;
+        }
+    }
+</script>
+</body>
+
+
+</html>
