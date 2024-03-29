@@ -1,3 +1,4 @@
+User
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -72,51 +73,52 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="bg-white shadow rounded-lg p-6">
+                                <h2 class="text-xl font-bold mb-4">Your Posts</h2>
+                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        {% for image in user_post_images %}
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                <img src="{{ image.image.url }}" class="d-block w-100" alt="Image">
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                            data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
                             <div class="max-w-sm rounded overflow-hidden shadow-lg">
                                 <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                                    {% for post in user_posts %}
-                                        <div>
-                                            <img class="w-full" src="{{ post.image.url }}" alt="{{ post.title }}">
-                                            <div class="px-6 py-4">
-                                                <div class="font-bold text-xl mb-2">{{ post.title }}</div>
-                                                <p class="text-gray-700 text-base">
-                                                    {{ post.content }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                                <div class="px-6 pt-4 pb-2">
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#music</span>
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#hiphop</span>
+                                    <img class="w-full" src="{% static 'images/leo.jpg' %}"
+                                         alt=" Sunset in the mountains">
+                                    <div class="px-6 py-4">
+                                        <div class="font-bold text-xl mb-2">هنرمند</div>
+                                        <p class="text-gray-700 text-base">
+                                            Al pacino
+                                        </p>
+                                    </div>
+                                    <div class="px-6 pt-4 pb-2">
+                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#movie</span>
+                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#art</span>
+                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                                <img class="w-full" src="{% static 'images/leo.jpg' %}"
-                                     alt=" Sunset in the mountains">
-                                <div class="px-6 py-4">
-                                    <div class="font-bold text-xl mb-2">هنرمند</div>
-                                    <p class="text-gray-700 text-base">
-                                        Al pacino
-                                    </p>
-                                </div>
-                                <div class="px-6 pt-4 pb-2">
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#movie</span>
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#art</span>
-                                    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 
 </body>
 </html>
