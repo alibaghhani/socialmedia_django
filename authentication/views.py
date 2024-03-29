@@ -45,5 +45,9 @@ class ProfileView(DetailView,LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.get_object()
-        context['user_posts'] = Post.objects.filter(user=user)
+        user_posts = Post.objects.filter(user=user)
+        user_post_images = Image.objects.filter(post__in=user_posts)
+        context['user_posts'] = user_posts
+        context['user_post_images'] = user_post_images
         return context
+
