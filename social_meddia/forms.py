@@ -1,7 +1,12 @@
 from django.forms import ModelForm
-from .models import Post
+from .models import Post,Image
 
-class UploadPostForm(ModelForm):
+class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content', 'image']
+        fields = ['title', 'content']
+
+class ImageForm(ModelForm):
+    class Meta:
+        model = Image
+        fields = ['image']
