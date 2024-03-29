@@ -7,7 +7,8 @@ urlpatterns = [
     path('',HomepageView.as_view(),name='home'),
     path('explore/', TemplateView.as_view(template_name='explore.html'), name='explore'),
     path('settings/', TemplateView.as_view(template_name='settings.html'), name='settings'),
-    path('post/',UploadPostView.as_view(),name='post')
+    path('post/',post_upload,name='post'),
+    path('search/',SearchUsersView.as_view(),name='search-users')
 
 
 ]
