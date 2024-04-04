@@ -16,9 +16,15 @@
             <button class="btn-dark">Log Out</button>
         </a>
         <button class="btn-light">Change Password</button>
-        <button class="btn-light">Change Username</button>
-        <button class="btn-light">Change Biography</button>
-        <button class="btn-light">Change Hobbies</button>
+        <a href="{% url 'change-username' user.id %}">
+            <button class="btn-light">Change Username</button>
+        </a>
+        <a href="{% url 'change-bio' user.id %}">
+            <button class="btn-light">Change Biography</button>
+        </a>
+        <a href="{% url 'change-hobbies' user.id %}">
+            <button class="btn-light">Change Hobbies</button>
+        </a>
     </div>
     <div class="mt-8">
         <label for="theme-toggle" class="flex items-center cursor-pointer">

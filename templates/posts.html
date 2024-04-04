@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>posts</title>
+</head>
+<body>
+{% for post in user_posts%}
+    <p>{{ post.title }}</p>
+    
+{% endfor %}
+</body>
+</html>

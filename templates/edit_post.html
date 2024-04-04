@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <!-- Input field for uploading a new image -->
+    <label for="id_new_image">New Image:</label>
+    <input type="file" name="new_image" id="id_new_image">
+    
+    <button type="submit">Save Changes</button>
+</form>
+</body>
+</html>

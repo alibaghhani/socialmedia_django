@@ -14,7 +14,9 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -37,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "authentication.apps.AuthenticationConfig",
+    "authentication",
     "social_meddia"
 
 ]
@@ -130,3 +132,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'authentication.User'
+
+# AUTHENTICATION_BACKENDS = (
+#     ('django.contrib.auth.backends.ModelBackend'),
+# )
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'django.social.media.project@gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = 'rwxnrgcrxcuxfnxi'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'aligram verification code'

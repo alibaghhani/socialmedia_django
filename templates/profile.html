@@ -1,124 +1,409 @@
-User
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>profile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>prof</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<style>
+    body {
+        background: #efefef;
+        font-family: "Arial";
+    }
+
+    .container {
+        max-width: 1250px;
+        margin: 30px auto 30px;
+        padding: 0 !important;
+        width: 90%;
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
+    }
+
+    header {
+        background: #eee;
+        background-image: url("https://images.pexels.com/photos/1731427/pexels-photo-1731427.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 250px;
+    }
+
+    header i {
+        position: relative;
+        cursor: pointer;
+        right: -96%;
+        top: 25px;
+        font-size: 18px !important;
+        color: #fff;
+    }
+
+    @media (max-width: 800px) {
+        header {
+            height: 150px;
+        }
+
+        header i {
+            right: -90%;
+        }
+    }
+
+    main {
+        padding: 20px 20px 0px 20px;
+    }
+
+    .left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .photo {
+        width: 200px;
+        height: 200px;
+        margin-top: -120px;
+        border-radius: 100px;
+        border: 4px solid #fff;
+    }
+
+    .active {
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        position: absolute;
+        right: calc(50% - 70px);
+        top: 50px;
+        background-color: #FFC107;
+        border: 3px solid #fff;
+    }
+
+    @media (max-width: 990px) {
+        .active {
+            right: calc(50% - 60px);
+            top: 50px;
+        }
+    }
+
+    .name {
+        margin-top: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 18pt;
+        color: #777;
+    }
+
+    .info {
+        margin-top: -5px;
+        margin-bottom: 5px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11pt;
+        color: #aaa;
+    }
+
+    .stats {
+        margin-top: 25px;
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ededed;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+
+    .number-stat {
+        padding: 0px;
+        font-size: 14pt;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        color: #aaa;
+    }
+
+    .desc-stat {
+        margin-top: -15px;
+        font-size: 10pt;
+        color: #bbb;
+    }
+
+    .desc {
+        text-align: center;
+        margin-top: 25px;
+        margin: 25px 40px;
+        color: #999;
+        font-size: 11pt;
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #ededed;
+    }
+
+    .social {
+        margin: 5px 0 12px 0;
+        text-align: center;
+        display: inline-block;
+        font-size: 20pt;
+    }
+
+    .social i {
+        cursor: pointer;
+        margin: 0 15px;
+    }
+
+    .social i:nth-child(1) {
+        color: #4267b2;
+    }
+
+    .social i:nth-child(2) {
+        color: #1da1f2;
+    }
+
+    .social i:nth-child(3) {
+        color: #bd081c;
+    }
+
+    .social i:nth-child(4) {
+        color: #36465d;
+    }
+
+    .right {
+        padding: 0 25px 0 25px !important;
+    }
+
+    .nav {
+        display: inline-flex;
+    }
+
+    .nav li {
+        margin: 40px 30px 0 10px;
+        cursor: pointer;
+        font-size: 13pt;
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        color: #888;
+    }
+
+    .nav li:hover, .nav li:nth-child(1) {
+        color: #999;
+        border-bottom: 2px solid #999;
+    }
+
+    .follow {
+        position: absolute;
+        right: 8%;
+        top: 35px;
+        font-size: 11pt;
+        background-color: #42b1fa;
+        color: #fff;
+        padding: 8px 15px;
+        cursor: pointer;
+        transition: all .4s;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+    }
+
+    .follow:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 990px) {
+        .nav {
+            display: none;
+        }
+
+        .follow {
+            width: 50%;
+            margin-left: 25%;
+            display: block;
+            position: unset;
+            text-align: center;
+        }
+    }
+
+    .gallery {
+        margin-top: 35px;
+    }
+
+    .gallery div {
+        margin-bottom: 30px;
+    }
+
+    .gallery img {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        max-width: 100%;
+    }
+
+    /* Styles for User Posts Section */
+    .user-posts {
+        margin-top: 35px;
+    }
+
+    /* Styles for Individual Posts */
+    .post {
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+
+    /* Styles for Post Content */
+    .post-content {
+        margin-bottom: 15px;
+    }
+
+    /* Styles for Post Images Slideshow */
+    .post-slideshow {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .post-slideshow img {
+        flex: 0 0 auto;
+        margin-right: 10px;
+        scroll-snap-align: start;
+    }
+
+    /* Styles for Like Button */
+    .like-btn {
+        background-color: #42b1fa;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .like-btn:hover {
+        background-color: #368bc1;
+    }
+
+
+</style>
 <body>
-<nav class="bg-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
-        <!-- Home button -->
-        <a href="{% url 'home' %}" class="text-gray-800 font-semibold">Home</a>
-        <!-- Explore button -->
-        <a href="{% url 'explore' %}" class="text-gray-800 font-semibold">Explore</a>
-    </div>
-</nav>
+<div class="container">
+    <header>
 
-<div class="bg-gray-100">
-    <div class="container mx-auto py-8">
-        <div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
-            <div class="col-span-4 sm:col-span-3">
-                <div class="bg-white shadow rounded-lg p-6">
-                    <div class="flex flex-col items-center">
-                        <img src="{% static 'images/profile.jpg' %}"
-                             class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
-                        </img>
-                        <h1 class="text-xl font-bold">{{ user.username }}</h1>
-                        <p class="text-gray-700"></p>
-                        <div class="mt-6 flex flex-wrap gap-4 justify-center">
-                            <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">Contact</a>
-                            <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">follow</a>
-                        </div>
+    </header>
+    <main>
+        <div class="row">
+            <div class="left col-lg-4">
+                <div class="photo-left">
+                {% if request.user.id != user.id and not is_followed%}
+                    <a href="{% url 'follow' user.id %}">follow</a>
+                {% elif request.user.id != user.id and  is_followed%}
+                    <a href="{% url 'unfollow' user.id %}">unfollow</a>
+                {% endif %}
+                    
+                    {% if user.profile %}
+                        <img src="{{ user.profile.url }}" class="photo" alt="img">
+                    {% else %}
+                        <img src="{% static 'images/Screenshot_2024-04-04_00-38-57.png' %}" class="photo" alt="img">
+                    {% endif %}
+                    <div class="active"></div>
+                </div>
+
+                <h4 class="name">{{ user.username }}</h4>
+
+                <h1>{{ user.gender }}</h1>
+                <div class="stats row">
+                    <div class="stat col-xs-4" style="padding-right: 50px;">
+                        <p class="number-stat">{{ user.get_follower_count }}</p>
+                        <p class="desc-stat">Followers</p>
                     </div>
-                    <hr class="my-6 border-t border-gray-300">
-                    <div class="flex flex-col">
-                        <span class="text-gray-700 uppercase font-bold tracking-wider mb-2">hobbies</span>
-                        <ul>
-                            <li class="mb-2">{{ user.hobbies }}</li>
-                        </ul>
-                        <br>
-                        <a href="#">followers</a>
-                        <a href="#">followings</a>
-                        <a href="{% url 'settings' %}">settings</a>
-                        <a href="{% url 'post' %}">create post</a>
+                    <div class="stat col-xs-4">
+                        <p class="number-stat">{{ user.get_following_count }}</p>
+                        <p class="desc-stat">Following</p>
+                    </div>
+                    <div class="stat col-xs-4" style="padding-left: 50px;">
+                        <p class="number-stat">{{ user.get_posts_count }}</p>
+                        <p class="desc-stat">Uploads</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-span-4 sm:col-span-9">
-                <div class="bg-white shadow rounded-lg p-6">
-                    <h2 class="text-xl font-bold mb-4">About Me</h2>
-                    <p class="text-gray-700">{{ user.biography }}
-                    </p>
-
-                    <h3 class="font-semibold text-center mt-3 -mb-2">
-                        Your posts
-                    </h3>
-                    <div class="flex justify-center items-center gap-6 my-6">
-                        <div class="flex justify-between">
-                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                                <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                                    <img class="w-full" src="{% static 'images/reservoir.jpg' %}"
-                                         alt=" Sunset in the mountains">
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">reservoir dogzzzzz</div>
-                                        <p class="text-gray-700 text-base">
-                                        </p>
-                                    </div>
-                                    <div class="px-6 pt-4 pb-2">
-                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#movie</span>
-                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#tarantino</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bg-white shadow rounded-lg p-6">
-                                <h2 class="text-xl font-bold mb-4">Your Posts</h2>
-                                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                        {% for image in user_post_images %}
-                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                                <img src="{{ image.image.url }}" class="d-block w-100" alt="Image">
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                    <button class="carousel-control-prev" type="button"
-                                            data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button"
-                                            data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                                <div class="max-w-sm rounded overflow-hidden shadow-lg">
-                                    <img class="w-full" src="{% static 'images/leo.jpg' %}"
-                                         alt=" Sunset in the mountains">
-                                    <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">هنرمند</div>
-                                        <p class="text-gray-700 text-base">
-                                            Al pacino
-                                        </p>
-                                    </div>
-                                    <div class="px-6 pt-4 pb-2">
-                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#movie</span>
-                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#art</span>
-                                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                <p class="desc">{{ user.biography }}</p>
+                <div class="social">
+                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                    <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+                    <i class="fa fa-tumblr-square" aria-hidden="true"></i>
                 </div>
             </div>
-        </div>
-    </div>
+            {% if request.user.id == user.id %}
+                <div class="right col-lg-8">
+                <ul class="nav">
+                <a href="{% url 'post' %}">
+                    post
+                </a>
+                <a href="{% url 'change-username' user.id %}">
+                    <button class="btn-light">Change Username</button>
+                </a>
+            {% endif %}
+
+            </ul>
+            <div class="user-posts">
+                <!-- Loop Through User Posts -->
+                {% for post in user_posts %}
+                    <!-- Single Post -->
+                    <div class="post">
+                        <!-- Post Content -->
+                        <div class="post-content">
+                            <!-- Post Title and Content -->
+                            <a href="{% url 'post_detail' post.id %}">post detail</a>
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.content }}</p>
+                            <p>{{ post.created_at }}</p>
+                            <!-- Like Button -->
+                            <button class="like-btn">Like</button>
+                            <!-- Comment Section -->
+                            <!-- Add Comment Section Here -->
+                        </div>
+                        <!-- Post Slideshow -->
+                        <div class="post-slideshow">
+                            <!-- Slideshow Will Be Generated by JavaScript -->
+                            <div class="slideshow-container">
+
+                                {% for image in post.post_image.all %}
+                                    <img class="slide" src="{{ image.image.url }}" alt="">
+
+                                {% endfor %}
+
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <script>
+                var slideIndex = 1;
+
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function currentSlide(n) {
+                    showSlides(slideIndex = n);
+                }
+
+                function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("slide");
+                    if (n > slides.length) {
+                        slideIndex = 1
+                    }
+                    if (n < 1) {
+                        slideIndex = slides.length
+                    }
+                    for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                }
+            </script>
 
 </body>
 </html>
